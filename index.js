@@ -56,7 +56,7 @@ const transferSol = async() => {
     });
 
     console.log("Airdrop completed for the Sender account");
-
+    // get wallet balances and identify send amount
     let fromBalance = await connection.getBalance(new PublicKey(from.publicKey)); 
     let toBalance = await connection.getBalance(new PublicKey(to.publicKey)); 
     let fromSend = (fromBalance)/2;
@@ -80,6 +80,7 @@ const transferSol = async() => {
         transaction,
         [from]
     );
+    // check and print final wallet balances
     console.log('Signature is ', signature);
     fromBalance = await connection.getBalance(new PublicKey(from.publicKey)); 
     toBalance = await connection.getBalance(new PublicKey(to.publicKey)); 
